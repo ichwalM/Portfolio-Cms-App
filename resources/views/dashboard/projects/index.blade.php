@@ -58,7 +58,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex flex-wrap gap-2">
-                                    @foreach(json_decode($project->tech_stack) ?? [] as $tech)
+                                    @foreach($project->tech_stack ?? [] as $tech)
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                                             {{ $tech }}
                                         </span>
