@@ -44,11 +44,22 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('projects', 'public');
+            $image = $request->file('thumbnail');
+            $filename = 'projects/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('projects')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('projects');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['thumbnail'] = $filename;
         }
 
         if (isset($validated['tech_stack'])) {
-            $validated['tech_stack'] = json_encode(array_map('trim', explode(',', $validated['tech_stack'])));
+            $validated['tech_stack'] = array_map('trim', explode(',', $validated['tech_stack']));
         }
 
         \App\Models\Project::create($validated);
@@ -84,11 +95,22 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('projects', 'public');
+            $image = $request->file('thumbnail');
+            $filename = 'projects/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('projects')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('projects');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['thumbnail'] = $filename;
         }
 
         if (isset($validated['tech_stack'])) {
-            $validated['tech_stack'] = json_encode(array_map('trim', explode(',', $validated['tech_stack'])));
+            $validated['tech_stack'] = array_map('trim', explode(',', $validated['tech_stack']));
         }
 
         $project->update($validated);

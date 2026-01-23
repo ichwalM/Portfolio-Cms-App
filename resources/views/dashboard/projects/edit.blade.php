@@ -53,7 +53,7 @@
                     <div class="space-y-4">
                          <div>
                             <label for="tech_stack" class="block text-sm font-medium text-slate-400 mb-2">Tech Stack (comma separated)</label>
-                            <input type="text" name="tech_stack" id="tech_stack" value="{{ old('tech_stack', implode(', ', $project->tech_stack ?? [])) }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="Laravel, React, Tailwind CSS">
+                            <input type="text" name="tech_stack" id="tech_stack" value="{{ old('tech_stack', implode(', ', (is_array($project->tech_stack) ? $project->tech_stack : json_decode($project->tech_stack, true)) ?? [])) }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="Laravel, React, Tailwind CSS">
                         </div>
                          
                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

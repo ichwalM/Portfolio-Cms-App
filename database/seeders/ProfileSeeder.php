@@ -20,6 +20,7 @@ class ProfileSeeder extends Seeder
                 'social_links' => [
                     'github' => 'https://github.com/ichwal',
                     'linkedin' => 'https://linkedin.com/in/ichwal',
+                    'instagram' => 'https://instagram.com/ichwal',
                     'twitter' => 'https://twitter.com/ichwal',
                 ],
             ]

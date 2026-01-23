@@ -79,13 +79,28 @@
                         <input type="url" name="social_links[github]" value="{{ old('social_links.github', $profile->social_links['github'] ?? '') }}" class="w-full bg-slate-950 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="https://github.com/username">
                     </div>
                 </div>
-                 <div>
+                <div>
                     <label class="block text-sm font-medium text-slate-400 mb-2">LinkedIn</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-slate-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </div>
                         <input type="url" name="social_links[linkedin]" value="{{ old('social_links.linkedin', $profile->social_links['linkedin'] ?? '') }}" class="w-full bg-slate-950 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="https://linkedin.com/in/username">
+                    </div>
+                </div>
+
+                <!-- Instagram -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-2">Instagram</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.407-.06 4.123-.06h.08zm3.543 1.374c-1.063-.047-1.407-.06-3.856-.06-2.427 0-2.793.013-3.864.063-1.062.05-1.636.223-2.022.372a2.915 2.915 0 00-1.057.69 2.915 2.915 0 00-.69 1.057c-.15.385-.323.959-.372 2.022-.05 1.07-.063 1.437-.063 3.864 0 2.446.013 2.793.063 3.864.05 1.062.223 1.636.372 2.022.195.503.453.896.844 1.288.391.391.784.649 1.288.844.385.15.959.323 2.022.372 1.07.05 1.437.063 3.864.063 2.446 0 2.793-.013 3.864-.063 1.062-.05 1.636-.223 2.022-.372a2.915 2.915 0 001.057-.69 2.915 2.915 0 00.69-1.057c.15-.385.323-.959.372-2.022.05-1.07.063-1.437.063-3.864 0-2.446-.013-2.793-.063-3.864-.05-1.062-.223-1.636-.372-2.022a2.915 2.915 0 00-1.057-.69 2.915 2.915 0 00-.69-1.057c-.387-.152-.962-.325-2.026-.374z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd" d="M12.309 6.874a5.201 5.201 0 00-5.187 5.208 5.201 5.201 0 005.187 5.208 5.201 5.201 0 005.187-5.208 5.201 5.201 0 00-5.187-5.208zm0 8.421a3.212 3.212 0 110-6.425 3.212 3.212 0 010 6.425z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd" d="M16.942 5.864a1.212 1.212 0 11-2.424 0 1.212 1.212 0 012.424 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="url" name="social_links[instagram]" value="{{ old('social_links.instagram', $profile->social_links['instagram'] ?? '') }}" class="w-full bg-slate-950 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="https://instagram.com/username">
                     </div>
                 </div>
             </div>

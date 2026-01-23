@@ -32,7 +32,18 @@ class BlogController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('blogs', 'public');
+            $image = $request->file('thumbnail');
+            $filename = 'blogs/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('blogs')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('blogs');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['thumbnail'] = $filename;
         }
 
         \App\Models\Blog::create($validated);
@@ -59,7 +70,18 @@ class BlogController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('blogs', 'public');
+            $image = $request->file('thumbnail');
+            $filename = 'blogs/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('blogs')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('blogs');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['thumbnail'] = $filename;
         }
 
         $post->update($validated);

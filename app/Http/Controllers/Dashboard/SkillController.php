@@ -31,7 +31,18 @@ class SkillController extends Controller
         ]);
 
         if ($request->hasFile('icon')) {
-            $validated['icon'] = $request->file('icon')->store('skills', 'public');
+            $image = $request->file('icon');
+            $filename = 'skills/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('skills')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('skills');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['icon'] = $filename;
         }
 
         \App\Models\Skill::create($validated);
@@ -57,7 +68,18 @@ class SkillController extends Controller
         ]);
 
         if ($request->hasFile('icon')) {
-            $validated['icon'] = $request->file('icon')->store('skills', 'public');
+            $image = $request->file('icon');
+            $filename = 'skills/' . uniqid() . '.webp';
+            
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('skills')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('skills');
+            }
+
+            \Intervention\Image\Laravel\Facades\Image::read($image)
+                ->toWebp(80)
+                ->save(storage_path('app/public/' . $filename));
+
+            $validated['icon'] = $filename;
         }
 
         $skill->update($validated);
