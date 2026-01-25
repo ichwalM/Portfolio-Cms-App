@@ -64,6 +64,13 @@ Welcome to the backend repository for the **Ichwal Portfolio**. This CMS allows 
 
 Base URL: `http://localhost:8000/api/v1`
 
+**Authentication:**
+All API endpoints in `v1` are protected. You must provide a valid API Key via:
+- Header: `X-API-KEY: your-api-key`
+- Query Parameter: `?api_key=your-api-key`
+
+> You can generate your API Key in the [Dashboard](http://localhost:8000/dashboard).
+
 ### 1. Profile
 **Endpoint**: `GET /profile`
 Returns the owner's profile information, hero image URL, and social links.
@@ -143,6 +150,31 @@ Returns a paginated list of published blog posts.
 
 **Endpoint**: `GET /posts/{slug}`
 Returns a specific blog post content.
+
+### 6. About
+**Endpoint**: `GET /about`
+Returns the comprehensive about section information including University and GPA.
+
+**Response:**
+```json
+{
+  "about_photo": "http://localhost:8000/storage/about/photo.webp",
+  "about_deskripsi": "I am a dedicated student...",
+  "about_univ": "Harvard University",
+  "GPA": "3.90"
+}
+```
+
+### 7. Visits
+**Endpoint**: `POST /visits`
+Records a new visit. Call this once when your frontend application loads.
+
+**Response:**
+```json
+{
+  "message": "Visit recorded"
+}
+```
 
 ---
 
