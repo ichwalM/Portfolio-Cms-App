@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('skills', App\Http\Controllers\Dashboard\SkillController::class);
         Route::resource('experiences', App\Http\Controllers\Dashboard\ExperienceController::class);
         Route::resource('blogs', App\Http\Controllers\Dashboard\BlogController::class);
+        Route::delete('/blogs/{blog}/photo/{index}', [App\Http\Controllers\Dashboard\BlogController::class, 'deletePhoto'])->name('blogs.photo.delete');
     });
 });
 

@@ -143,4 +143,25 @@ class BlogController extends Controller
         $post->delete();
         return back()->with('success', 'Post deleted successfully!');
     }
+
+    public function deletePhoto(string $id, int $index)
+    {
+        $post = \App\Models\Blog::findOrFail($id);
+        $photos = $post->additional_photos ?? [];
+        
+        if (isset($photos[$index])) {
+            // Delete the file from storage
+            if (\Illuminate\Support\Facades\Storage::disk('public')->exists($photos[$index])) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($photos[$index]);
+            }
+            
+            // Remove from array
+            array_splice($photos, $index, 1);
+            $post->update(['additional_photos' => empty($photos) ? null : array_values($photos)]);
+            
+            return response()->json(['success' => true, 'message' => 'Photo deleted successfully']);
+        }
+        
+        return response()->json(['success' => false, 'message' => 'Photo not found'], 404);
+    }
 }

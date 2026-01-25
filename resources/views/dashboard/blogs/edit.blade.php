@@ -70,12 +70,19 @@
                 <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-4">Additional Photos <span class="text-xs text-slate-500 font-normal">(Optional)</span></h3>
                     @if($post->additional_photos && count($post->additional_photos) > 0)
-                        <div class="grid grid-cols-2 gap-2 mb-4">
-                            @foreach($post->additional_photos as $photo)
-                                <img src="{{ asset('storage/' . $photo) }}" alt="Additional photo" class="w-full rounded-lg border border-white/10">
+                        <div class="grid grid-cols-2 gap-2 mb-4" id="existing-photos-grid">
+                            @foreach($post->additional_photos as $index => $photo)
+                                <div class="relative group" data-photo-index="{{ $index }}">
+                                    <img src="{{ asset('storage/' . $photo) }}" alt="Additional photo" class="w-full rounded-lg border border-white/10">
+                                    <button type="button" onclick="deletePhoto({{ $post->id }}, {{ $index }})" class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
                             @endforeach
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">{{ count($post->additional_photos) }} photo(s) uploaded. Add more below:</p>
+                        <p class="text-xs text-slate-500 mb-4"><span id="photo-count">{{ count($post->additional_photos) }}</span> photo(s) uploaded. Add more below:</p>
                     @endif
                     <div class="w-full border-2 border-dashed border-white/10 rounded-xl p-8 text-center transition-colors hover:border-indigo-500/50 cursor-pointer relative bg-slate-950/50">
                         <input type="file" name="additional_photos[]" id="additional_photos" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
@@ -111,6 +118,60 @@
             slug.value = title.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
         }
     });
+
+    // Delete photo function
+    function deletePhoto(postId, photoIndex) {
+        if (!confirm('Are you sure you want to delete this photo?')) {
+            return;
+        }
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || 
+                         document.querySelector('input[name="_token"]')?.value;
+
+        fetch(`/dashboard/blogs/${postId}/photo/${photoIndex}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Remove the photo element from DOM
+                const photoElement = document.querySelector(`[data-photo-index="${photoIndex}"]`);
+                if (photoElement) {
+                    photoElement.remove();
+                }
+
+                // Update photo count
+                const photoCount = document.getElementById('photo-count');
+                if (photoCount) {
+                    const currentCount = parseInt(photoCount.textContent);
+                    const newCount = currentCount - 1;
+                    photoCount.textContent = newCount;
+                    
+                    // Hide the grid if no photos left
+                    if (newCount === 0) {
+                        const grid = document.getElementById('existing-photos-grid');
+                        if (grid && grid.parentElement) {
+                            grid.parentElement.style.display = 'none';
+                        }
+                    }
+                }
+
+                // Show success message (optional - could add a toast notification)
+                alert('Photo deleted successfully!');
+            } else {
+                alert('Failed to delete photo: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the photo');
+        });
+    }
 
     // Additional photos preview
     const additionalPhotosInput = document.getElementById('additional_photos');
