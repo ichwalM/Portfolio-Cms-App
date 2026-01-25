@@ -48,4 +48,24 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Profile updated successfully!');
     }
+
+    public function updateAccount(Request $request)
+    {
+        $validated = $request->validate([
+            'account_name' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user = auth()->user();
+        
+        $data = ['name' => $validated['account_name']];
+        
+        if ($request->filled('password')) {
+            $data['password'] = \Illuminate\Support\Facades\Hash::make($validated['password']);
+        }
+
+        $user->update($data);
+
+        return back()->with('success', 'Account settings updated successfully!');
+    }
 }

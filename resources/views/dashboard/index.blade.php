@@ -3,120 +3,98 @@
 @section('header', 'Overview')
 
 @section('content')
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-    <!-- Stat Card 1 -->
-    <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
-        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-            <svg class="w-24 h-24 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+<div class="space-y-6">
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Projects Stat -->
+        <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg class="w-24 h-24 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-slate-400">Total Projects</p>
+                <p class="text-3xl font-bold text-white mt-2">{{ $stats['projects'] }}</p>
+            </div>
         </div>
-        <div>
-            <p class="text-sm font-medium text-slate-400">Total Projects</p>
-            <p class="text-3xl font-bold text-white mt-2">12</p>
+
+        <!-- Blogs Stat -->
+        <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg class="w-24 h-24 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-slate-400">Blog Posts</p>
+                <p class="text-3xl font-bold text-white mt-2">{{ $stats['blogs'] }}</p>
+            </div>
         </div>
-        <div class="mt-4 flex items-center text-sm text-green-400">
-            <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-            <span>+2 this month</span>
+
+        <!-- Visits Stat -->
+        <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg class="w-24 h-24 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-slate-400">Unique Visits</p>
+                <p class="text-3xl font-bold text-white mt-2">{{ $stats['visits'] }}</p>
+            </div>
+        </div>
+
+        <!-- Experience Stat -->
+        <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg class="w-24 h-24 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm font-medium text-slate-400">Experience</p>
+                <p class="text-3xl font-bold text-white mt-2">{{ $stats['experiences'] }}</p>
+            </div>
         </div>
     </div>
 
-    <!-- Stat Card 2 -->
-    <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
-        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-            <svg class="w-24 h-24 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-            </svg>
-        </div>
-        <div>
-            <p class="text-sm font-medium text-slate-400">Blog Posts</p>
-            <p class="text-3xl font-bold text-white mt-2">8</p>
-        </div>
-        <div class="mt-4 flex items-center text-sm text-green-400">
-             <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-            <span>New post published</span>
-        </div>
-    </div>
-
-    <!-- Stat Card 3 -->
-    <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 rounded-2xl relative overflow-hidden group">
-        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-            <svg class="w-24 h-24 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        </div>
-        <div>
-            <p class="text-sm font-medium text-slate-400">Total Visits</p>
-            <p class="text-3xl font-bold text-white mt-2">2.4k</p>
-        </div>
-        <div class="mt-4 flex items-center text-sm text-green-400">
-            <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
-            <span>+12% this week</span>
-        </div>
-    </div>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <!-- Recent Activity -->
-    <div class="lg:col-span-2 bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6">
-        <h3 class="text-lg font-semibold text-white mb-4">Recent Projects</h3>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-400">
-                <thead class="bg-white/5 text-xs uppercase font-medium text-slate-300">
-                    <tr>
-                        <th class="px-4 py-3 rounded-l-lg">Project Name</th>
-                        <th class="px-4 py-3">Tech Stack</th>
-                        <th class="px-4 py-3">Status</th>
-                        <th class="px-4 py-3 rounded-r-lg text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-white/5">
-                    <tr class="hover:bg-white/5 transition-colors">
-                        <td class="px-4 py-3 font-medium text-white">Portfolio Website</td>
-                        <td class="px-4 py-3">Laravel, Tailwind</td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full text-xs bg-green-500/20 text-green-400">Published</span></td>
-                        <td class="px-4 py-3 text-right text-indigo-400 hover:text-indigo-300 cursor-pointer">Edit</td>
-                    </tr>
-                    <tr class="hover:bg-white/5 transition-colors">
-                        <td class="px-4 py-3 font-medium text-white">E-Commerce App</td>
-                        <td class="px-4 py-3">React, Node.js</td>
-                        <td class="px-4 py-3"><span class="px-2 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-400">Draft</span></td>
-                        <td class="px-4 py-3 text-right text-indigo-400 hover:text-indigo-300 cursor-pointer">Edit</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Quick Actions -->
+    <!-- API Key Section -->
     <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6">
-        <h3 class="text-lg font-semibold text-white mb-4">Quick Actions</h3>
-        <div class="space-y-3">
-             <button class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/50 transition-all group">
-                <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
-                    </div>
-                    <span class="ml-3 font-medium text-slate-300 group-hover:text-white">Add Project</span>
-                </div>
-                <svg class="w-5 h-5 text-slate-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-            </button>
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="text-lg font-semibold text-white">API Configuration</h3>
+                <p class="text-sm text-slate-400 mt-1">Manage your API access key. This key is required to access data endpoints.</p>
+            </div>
+            <form action="{{ route('dashboard.generate-key') }}" method="POST">
+                @csrf
+                <button type="submit" class="px-4 py-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl hover:bg-indigo-500 hover:text-white transition-all text-sm font-medium">
+                    {{ auth()->user()->api_key ? 'Regenerate Key' : 'Generate Key' }}
+                </button>
+            </form>
+        </div>
 
-             <button class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-purple-500/50 transition-all group">
-                <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                    </div>
-                    <span class="ml-3 font-medium text-slate-300 group-hover:text-white">Write Post</span>
-                </div>
-                 <svg class="w-5 h-5 text-slate-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-            </button>
+        <div class="bg-slate-950/50 border border-white/5 rounded-xl p-4">
+            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Your API Key</label>
+            <div class="flex items-center space-x-4">
+                <code class="flex-1 bg-black/30 text-white font-mono text-sm px-4 py-3 rounded-lg border border-white/5 break-all">
+                    {{ auth()->user()->api_key ?? 'No API Key generated yet' }}
+                </code>
+                @if(auth()->user()->api_key)
+                <button onclick="navigator.clipboard.writeText('{{ auth()->user()->api_key }}')" class="p-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors" title="Copy to clipboard">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                </button>
+                @endif
+            </div>
+            <div class="mt-4 flex items-start space-x-2 text-xs text-amber-400/80 bg-amber-500/5 p-3 rounded-lg border border-amber-500/10">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <p>Keep your API key secure. Authentication requires sending this key in the <code class="text-white">X-API-KEY</code> header or <code class="text-white">api_key</code> query parameter.</p>
+            </div>
         </div>
     </div>
 </div>

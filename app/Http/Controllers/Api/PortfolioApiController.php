@@ -95,4 +95,18 @@ class PortfolioApiController extends Controller
             
         return response()->json($post);
     }
+
+    public function getAbout()
+    {
+        $about = \App\Models\About::first();
+        
+        $data = [
+            'about_photo' => $about && $about->photo ? asset('storage/' . $about->photo) : null,
+            'about_deskripsi' => $about ? $about->description : null,
+            'about_univ' => $about ? $about->university : null,
+            'GPA' => $about ? $about->gpa : null,
+        ];
+
+        return response()->json($data);
+    }
 }

@@ -113,5 +113,50 @@
             </button>
         </div>
     </form>
+
+    <div class="my-8 border-t border-white/5"></div>
+
+    <form action="{{ route('dashboard.profile.account.update') }}" method="POST" class="space-y-6">
+        @csrf
+        @method('PUT')
+
+        <!-- Account Settings Card -->
+        <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-8">
+            <h2 class="text-lg font-semibold text-white mb-6">Account Settings</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Login Name -->
+                <div class="md:col-span-2">
+                    <label for="account_name" class="block text-sm font-medium text-slate-400 mb-2">Login Name</label>
+                    <input type="text" name="account_name" id="account_name" value="{{ old('account_name', auth()->user()->name) }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="Admin Name">
+                    @error('account_name')
+                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- New Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-slate-400 mb-2">New Password (Optional)</label>
+                    <input type="password" name="password" id="password" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="New Password">
+                    @error('password')
+                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="password_confirmation" class="block text-sm font-medium text-slate-400 mb-2">Confirm New Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="Confirm Password">
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+            <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-8 rounded-xl shadow-lg shadow-indigo-500/20 transition-all transform hover:scale-105">
+                Update Account
+            </button>
+        </div>
+    </form>
 </div>
 @endsection
