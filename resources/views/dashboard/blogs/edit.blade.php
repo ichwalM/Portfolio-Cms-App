@@ -68,6 +68,26 @@
                 </div>
 
                 <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4">Additional Photos <span class="text-xs text-slate-500 font-normal">(Optional)</span></h3>
+                    @if($post->additional_photos && count($post->additional_photos) > 0)
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            @foreach($post->additional_photos as $photo)
+                                <img src="{{ asset('storage/' . $photo) }}" alt="Additional photo" class="w-full rounded-lg border border-white/10">
+                            @endforeach
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">{{ count($post->additional_photos) }} photo(s) uploaded. Add more below:</p>
+                    @endif
+                    <div class="w-full border-2 border-dashed border-white/10 rounded-xl p-8 text-center transition-colors hover:border-indigo-500/50 cursor-pointer relative bg-slate-950/50">
+                        <input type="file" name="additional_photos[]" id="additional_photos" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <svg class="mx-auto h-12 w-12 text-slate-500" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p class="mt-1 text-sm text-slate-400">Add documentation/gallery images</p>
+                        <p class="mt-1 text-xs text-slate-500">Select multiple images (PNG, JPG up to 10MB each)</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-4">Publishing</h3>
                     <div class="flex items-center space-x-3 mb-4">
                         <input type="checkbox" name="published_at" id="published_at" value="{{ now()->format('Y-m-d') }}" {{ $post->published_at ? 'checked' : '' }} class="w-5 h-5 rounded border-white/20 bg-slate-950 text-indigo-500 focus:ring-indigo-500">

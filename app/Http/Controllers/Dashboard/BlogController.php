@@ -29,6 +29,7 @@ class BlogController extends Controller
             'content' => 'required|string',
             'thumbnail' => 'required|image|max:10240',
             'published_at' => 'nullable|date',
+            'additional_photos.*' => 'nullable|image|max:10240',
         ]);
 
         if ($request->hasFile('thumbnail')) {
@@ -45,6 +46,26 @@ class BlogController extends Controller
 
             $validated['thumbnail'] = $filename;
         }
+
+        // Handle additional photos
+        $additionalPhotos = [];
+        if ($request->hasFile('additional_photos')) {
+            foreach ($request->file('additional_photos') as $photo) {
+                $filename = 'blogs/additional/' . uniqid() . '.webp';
+                
+                if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('blogs/additional')) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('blogs/additional');
+                }
+
+                \Intervention\Image\Laravel\Facades\Image::read($photo)
+                    ->toWebp(80)
+                    ->save(storage_path('app/public/' . $filename));
+
+                $additionalPhotos[] = $filename;
+            }
+        }
+
+        $validated['additional_photos'] = !empty($additionalPhotos) ? $additionalPhotos : null;
 
         \App\Models\Blog::create($validated);
 
@@ -67,6 +88,7 @@ class BlogController extends Controller
             'content' => 'nullable|string',
             'thumbnail' => 'nullable|image|max:10240',
             'published_at' => 'nullable|date',
+            'additional_photos.*' => 'nullable|image|max:10240',
         ]);
 
         if ($request->hasFile('thumbnail')) {
@@ -82,6 +104,32 @@ class BlogController extends Controller
                 ->save(storage_path('app/public/' . $filename));
 
             $validated['thumbnail'] = $filename;
+        }
+
+        // Handle additional photos - keep existing and add new ones
+        $existingPhotos = $post->additional_photos ?? [];
+        $newPhotos = [];
+        
+        if ($request->hasFile('additional_photos')) {
+            foreach ($request->file('additional_photos') as $photo) {
+                $filename = 'blogs/additional/' . uniqid() . '.webp';
+                
+                if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('blogs/additional')) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('blogs/additional');
+                }
+
+                \Intervention\Image\Laravel\Facades\Image::read($photo)
+                    ->toWebp(80)
+                    ->save(storage_path('app/public/' . $filename));
+
+                $newPhotos[] = $filename;
+            }
+        }
+
+        // Merge existing and new photos
+        $validated['additional_photos'] = array_merge($existingPhotos, $newPhotos);
+        if (empty($validated['additional_photos'])) {
+            $validated['additional_photos'] = null;
         }
 
         $post->update($validated);

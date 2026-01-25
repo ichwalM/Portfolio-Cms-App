@@ -77,6 +77,11 @@ class PortfolioApiController extends Controller
             if($post->thumbnail) {
                 $post->thumbnail = asset('storage/' . $post->thumbnail);
             }
+            if($post->additional_photos && is_array($post->additional_photos)) {
+                $post->additional_photos = array_map(function($photo) {
+                    return asset('storage/' . $photo);
+                }, $post->additional_photos);
+            }
             return $post;
         });
 
@@ -91,6 +96,12 @@ class PortfolioApiController extends Controller
             
         if($post->thumbnail) {
             $post->thumbnail = asset('storage/' . $post->thumbnail);
+        }
+        
+        if($post->additional_photos && is_array($post->additional_photos)) {
+            $post->additional_photos = array_map(function($photo) {
+                return asset('storage/' . $photo);
+            }, $post->additional_photos);
         }
             
         return response()->json($post);

@@ -148,8 +148,28 @@ Returns a list of work experiences ordered by date.
 **Endpoint**: `GET /posts`
 Returns a paginated list of published blog posts.
 
+**Response:**
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Getting Started with Laravel",
+      "slug": "getting-started-with-laravel",
+      "thumbnail": "http://localhost:8000/storage/blogs/thumb.webp",
+      "additional_photos": [
+        "http://localhost:8000/storage/blogs/additional/doc1.webp",
+        "http://localhost:8000/storage/blogs/additional/doc2.webp"
+      ],
+      "published_at": "2024-01-15"
+    }
+  ],
+  "links": { ... }
+}
+```
+
 **Endpoint**: `GET /posts/{slug}`
-Returns a specific blog post content.
+Returns a specific blog post with full content and optional additional photos (documentation, screenshots, etc.).
 
 ### 6. About
 **Endpoint**: `GET /about`
