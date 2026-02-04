@@ -25,6 +25,7 @@ class ProfileController extends Controller
             'hero_image' => 'nullable|image|max:10240', // 10MB
             'resume_link' => 'nullable|url',
             'social_links' => 'nullable|array',
+            'open_work' => 'boolean',
         ]);
 
         $profile = \App\Models\Profile::firstOrFail();
@@ -43,6 +44,8 @@ class ProfileController extends Controller
 
             $validated['hero_image'] = $filename;
         }
+
+        $validated['open_work'] = $request->has('open_work');
 
         $profile->update($validated);
 

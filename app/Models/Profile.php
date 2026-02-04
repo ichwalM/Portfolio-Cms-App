@@ -10,5 +10,6 @@ class Profile extends Model
 
     protected $casts = [
         'social_links' => 'array',
+        'open_work' => 'boolean',
     ];
 }

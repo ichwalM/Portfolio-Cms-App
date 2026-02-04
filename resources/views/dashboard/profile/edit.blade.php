@@ -63,6 +63,17 @@
                     <label for="bio" class="block text-sm font-medium text-slate-400 mb-2">Bio / About Me</label>
                     <textarea name="bio" id="bio" rows="4" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="Tell us about yourself...">{{ old('bio', $profile->bio) }}</textarea>
                 </div>
+
+                <!-- Open to Work -->
+                <div class="md:col-span-2 relative flex items-start">
+                    <div class="flex h-6 items-center">
+                        <input id="open_work" name="open_work" type="checkbox" value="1" {{ old('open_work', $profile->open_work) ? 'checked' : '' }} class="h-4 w-4 bg-slate-950 border-white/10 rounded text-indigo-500 focus:ring-indigo-500 transition-colors">
+                    </div>
+                    <div class="ml-3 text-sm leading-6">
+                        <label for="open_work" class="font-medium text-white">Open to Work</label>
+                        <p class="text-slate-400">Enable this to show that you are available for new opportunities.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
