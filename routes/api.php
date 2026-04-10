@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\PortfolioApiController;
 
 Route::get('/user', function (Request $request) {
@@ -19,3 +20,5 @@ Route::prefix('v1')->middleware('api.key')->group(function () {
     Route::get('/about', [PortfolioApiController::class, 'getAbout']);
     Route::post('/visits', [App\Http\Controllers\Api\VisitApiController::class, 'store']);
 });
+
+Route::middleware('api.key')->post('/contact', [ContactController::class, 'store']);

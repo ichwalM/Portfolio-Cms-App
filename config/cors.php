@@ -19,7 +19,14 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://192.168.1.36:3000', 'http://localhost:8000', 'http://localhost:3000', 'app.walldev.my.id'],
+    'allowed_origins' => [
+        'http://192.168.1.36:3000',
+        'http://localhost:8000',
+        'http://localhost:3000',
+        'https://walldev.my.id',
+        'https://app.walldev.my.id',
+        'app.walldev.my.id',
+    ],
 
     'allowed_origins_patterns' => [],
 
