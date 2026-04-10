@@ -21,4 +21,4 @@ Route::prefix('v1')->middleware('api.key')->group(function () {
     Route::post('/visits', [App\Http\Controllers\Api\VisitApiController::class, 'store']);
 });
 
-Route::middleware('api.key')->post('/contact', [ContactController::class, 'store']);
+Route::middleware('api.key')->post('/v1/contact', [ContactController::class, 'store']);
