@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
                 'thumbnail' => null,
                 'tech_stack' => ['Laravel', 'React', 'MySQL', 'Stripe', 'Redis'],
                 'demo_url' => 'https://demo.ecommerce.com',
-                'github_url' => 'https://github.com/ichwal/ecommerce',
+                'github_url' => 'https://github.com/portfolio-owner/ecommerce',
                 'published_at' => now()->subMonths(2),
             ],
             [
@@ -27,7 +27,7 @@ class ProjectSeeder extends Seeder
                 'thumbnail' => null,
                 'tech_stack' => ['Vue.js', 'Firebase', 'Tailwind CSS', 'Node.js'],
                 'demo_url' => 'https://tasks.app',
-                'github_url' => 'https://github.com/ichwal/tasks',
+                'github_url' => 'https://github.com/portfolio-owner/tasks',
                 'published_at' => now()->subMonths(5),
             ],
             [
@@ -37,7 +37,7 @@ class ProjectSeeder extends Seeder
                 'thumbnail' => null,
                 'tech_stack' => ['Next.js', 'OpenAI API', 'PostgreSQL', 'Prisma'],
                 'demo_url' => 'https://ai-gen.art',
-                'github_url' => 'https://github.com/ichwal/ai-gen',
+                'github_url' => 'https://github.com/portfolio-owner/ai-gen',
                 'published_at' => now()->subMonth(),
             ],
         ];

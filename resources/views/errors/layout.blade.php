@@ -7,9 +7,9 @@
 
     <title>
         @hasSection('title')
-            @yield('title') | {{ config('app.name', 'Ichwal CMS') }}
+            @yield('title') | {{ config('app.name', 'Portfolio CMS') }}
         @else
-            {{ config('app.name', 'Ichwal CMS') }}
+            {{ config('app.name', 'Portfolio CMS') }}
         @endif
     </title>
 
@@ -29,7 +29,7 @@
             <div class="w-full max-w-2xl rounded-3xl border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl md:p-10">
                 <div class="mb-8 flex items-center justify-between gap-4">
                     <a href="{{ url('/') }}" class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300 transition hover:text-cyan-200">
-                        {{ config('app.name', 'Ichwal CMS') }}
+                        {{ config('app.name', 'Portfolio CMS') }}
                     </a>
                     <span class="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300">
                         HTTP @yield('code', 'Error')

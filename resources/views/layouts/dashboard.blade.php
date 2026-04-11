@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @php
-        $appName = config('app.name', 'Ichwal CMS');
+        $appName = config('app.name', 'Portfolio CMS');
         $pageTitle = trim($__env->yieldContent('title'));
         $headerTitle = trim($__env->yieldContent('header', 'Dashboard'));
         $fullTitle = $pageTitle !== ''

@@ -11,7 +11,7 @@ class ProjectSlugEndpointTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_it_can_get_published_project_by_slug_on_non_versioned_endpoint(): void
+    public function test_it_can_get_published_project_by_slug_on_v1_endpoint(): void
     {
         User::factory()->create([
             'api_key' => 'project-endpoint-key',
@@ -27,7 +27,7 @@ class ProjectSlugEndpointTest extends TestCase
             'published_at' => now(),
         ]);
 
-        $response = $this->getJson('/api/projects/portfolio-cms?api_key=project-endpoint-key');
+        $response = $this->getJson('/api/v1/projects/portfolio-cms?api_key=project-endpoint-key');
 
         $response
             ->assertOk()
@@ -49,14 +49,14 @@ class ProjectSlugEndpointTest extends TestCase
             'published_at' => null,
         ]);
 
-        $response = $this->getJson('/api/projects/draft-project?api_key=project-endpoint-key');
+        $response = $this->getJson('/api/v1/projects/draft-project?api_key=project-endpoint-key');
 
         $response->assertNotFound();
     }
 
     public function test_it_rejects_project_endpoint_without_valid_api_key(): void
     {
-        $response = $this->getJson('/api/projects/portfolio-cms?api_key=wrong-key');
+        $response = $this->getJson('/api/v1/projects/portfolio-cms?api_key=wrong-key');
 
         $response
             ->assertStatus(401)

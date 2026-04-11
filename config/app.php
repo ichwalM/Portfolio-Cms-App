@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Ichwal CMS'),
+    'name' => env('APP_NAME', 'Portfolio CMS'),
 
     /*
     |--------------------------------------------------------------------------

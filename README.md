@@ -1,6 +1,6 @@
-# Ichwal Portfolio CMS (Backend)
+# Portfolio CMS Backend
 
-Welcome to the backend repository for the **Ichwal Portfolio**. This CMS allows full management of portfolio content including projects, skills, experience, and blog posts. It exposes a JSON API for consumption by a frontend application (e.g., Next.js).
+Welcome to the backend repository for a **Portfolio CMS**. This CMS allows full management of portfolio content including projects, skills, experience, and blog posts. It exposes a JSON API for consumption by a frontend application (e.g., Next.js).
 
 ## 🚀 Getting Started
 
@@ -15,8 +15,8 @@ Welcome to the backend repository for the **Ichwal Portfolio**. This CMS allows 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/ichwal/ichwal-cms.git
-    cd ichwal-cms
+    git clone https://github.com/your-org/portfolio-cms-backend.git
+    cd portfolio-cms-backend
     ```
 
 2.  **Install dependencies:**
@@ -55,7 +55,7 @@ Welcome to the backend repository for the **Ichwal Portfolio**. This CMS allows 
 
 - **Dashboard URL**: `http://localhost:8000/dashboard`
 - **Default Admin**:
-    - Email: `admin@ichwal.com`
+    - Email: `admin@example.com`
     - Password: `password`
 
 ---
@@ -79,11 +79,11 @@ Returns the owner's profile information, hero image URL, and social links.
 ```json
 {
   "id": 1,
-  "name": "Ichwal",
+  "name": "Portfolio Owner",
   "bio": "Passionate Full Stack Developer...",
   "hero_image": "http://localhost:8000/storage/profile/hero.jpg",
   "social_links": {
-    "github": "https://github.com/ichwal",
+    "github": "https://github.com/portfolio-owner",
     "linkedin": "..."
   }
 }

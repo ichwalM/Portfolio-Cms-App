@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Ichwal CMS') }}</title>
+        <title>{{ config('app.name', 'Portfolio CMS') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
             <div class="w-full sm:max-w-md mt-6 px-8 py-8 bg-slate-900/50 backdrop-blur-xl border border-white/5 shadow-2xl overflow-hidden sm:rounded-2xl relative z-10">
                  <div class="flex justify-center mb-8">
                     <span class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                        {{ config('app.name', 'Ichwal CMS') }}
+                        {{ config('app.name', 'Portfolio CMS') }}
                     </span>
                  </div>
                 {{ $slot }}
