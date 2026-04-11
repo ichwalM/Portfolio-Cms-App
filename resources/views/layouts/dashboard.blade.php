@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Portfolio CMS') }}</title>
+    @php
+        $appName = config('app.name', 'Ichwal CMS');
+        $pageTitle = trim($__env->yieldContent('title'));
+        $headerTitle = trim($__env->yieldContent('header', 'Dashboard'));
+        $fullTitle = $pageTitle !== ''
+            ? $pageTitle . ' | ' . $appName
+            : $headerTitle . ' | ' . $appName;
+    @endphp
+
+    <title>{{ $fullTitle }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +36,7 @@
                 <!-- Logo -->
                 <div class="h-16 flex items-center px-6 border-b border-white/5">
                     <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                        Ichwal CMS
+                        {{ $appName }}
                     </span>
                 </div>
 
