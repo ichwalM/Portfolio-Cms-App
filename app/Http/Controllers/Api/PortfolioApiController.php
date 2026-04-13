@@ -120,4 +120,26 @@ class PortfolioApiController extends Controller
 
         return response()->json($data);
     }
+
+    public function getCertificates()
+    {
+        $certificates = \App\Models\Certificate::query()
+            ->orderByDesc('issue_date')
+            ->orderByDesc('id')
+            ->get()
+            ->map(function ($certificate) {
+                return [
+                    'id' => $certificate->id,
+                    'title' => $certificate->title,
+                    'issuer' => $certificate->issuer,
+                    'issue_date' => optional($certificate->issue_date)->format('Y-m-d'),
+                    'credential_id' => $certificate->credential_id,
+                    'credential_url' => $certificate->credential_url,
+                    'image' => $certificate->image ? asset('storage/' . $certificate->image) : null,
+                ];
+            })
+            ->values();
+
+        return response()->json($certificates);
+    }
 }

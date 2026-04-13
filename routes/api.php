@@ -18,6 +18,7 @@ Route::prefix('v1')->middleware('api.key')->group(function () {
     Route::get('/posts', [PortfolioApiController::class, 'getPosts']);
     Route::get('/posts/{slug}', [PortfolioApiController::class, 'getPost']);
     Route::get('/about', [PortfolioApiController::class, 'getAbout']);
+    Route::get('/certificates', [PortfolioApiController::class, 'getCertificates']);
     Route::post('/visits', [App\Http\Controllers\Api\VisitApiController::class, 'store']);
 });
 
