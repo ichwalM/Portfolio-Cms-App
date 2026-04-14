@@ -30,7 +30,7 @@ class CertificateController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'issuer' => 'required|string|max:255',
-            'issue_date' => 'nullable|date',
+            'issue_date' => 'nullable|integer|min:1900|max:2099',
             'credential_id' => 'nullable|string|max:255',
             'credential_url' => 'nullable|url|max:2048',
             'image' => 'nullable|image|max:10240',
@@ -59,7 +59,7 @@ class CertificateController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'issuer' => 'required|string|max:255',
-            'issue_date' => 'nullable|date',
+            'issue_date' => 'nullable|integer|min:1900|max:2099',
             'credential_id' => 'nullable|string|max:255',
             'credential_url' => 'nullable|url|max:2048',
             'image' => 'nullable|image|max:10240',

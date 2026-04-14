@@ -7,8 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     protected $guarded = [];
-
-    protected $casts = [
-        'issue_date' => 'date',
-    ];
 }

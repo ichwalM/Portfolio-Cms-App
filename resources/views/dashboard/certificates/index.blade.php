@@ -57,7 +57,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">{{ $certificate->issuer }}</td>
-                            <td class="px-6 py-4">{{ optional($certificate->issue_date)->format('d M Y') }}</td>
+                            <td class="px-6 py-4">{{ $certificate->issue_date ?: '-' }}</td>
                             <td class="px-6 py-4 text-right space-x-2">
                                 @if($certificate->credential_url)
                                     <a href="{{ $certificate->credential_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-slate-400 hover:text-indigo-400 transition-colors p-1" title="Open Credential">

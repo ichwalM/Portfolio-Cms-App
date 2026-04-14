@@ -38,8 +38,8 @@
                         <input type="text" name="issuer" id="issuer" value="{{ old('issuer') }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="e.g. Amazon Web Services">
                     </div>
                     <div>
-                        <label for="issue_date" class="block text-sm font-medium text-slate-400 mb-2">Issue Date (Optional)</label>
-                        <input type="date" name="issue_date" id="issue_date" value="{{ old('issue_date') }}" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors">
+                        <label for="issue_date" class="block text-sm font-medium text-slate-400 mb-2">Issue Year (Optional)</label>
+                        <input type="number" name="issue_date" id="issue_date" value="{{ old('issue_date') }}" min="1900" max="2099" class="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors" placeholder="e.g. 2024">
                     </div>
                 </div>
 
