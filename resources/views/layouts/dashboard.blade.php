@@ -27,11 +27,18 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-950 text-slate-200 antialiased selection:bg-indigo-500 selection:text-white">
+<body x-data="{ sidebarOpen: false }" class="bg-slate-950 text-slate-200 antialiased selection:bg-indigo-500 selection:text-white" @keydown.escape.window="sidebarOpen = false">
 
     <div class="min-h-screen flex overflow-hidden">
+        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden" @click="sidebarOpen = false"></div>
+
         <!-- Sidebar -->
-        <aside class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900/80 backdrop-blur-xl border-r border-white/5 transition-transform duration-300 transform md:translate-x-0 -translate-x-full" id="sidebar">
+        <aside
+            class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900/85 backdrop-blur-xl border-r border-white/10 transition-transform duration-300 transform md:translate-x-0"
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+            id="sidebar"
+            aria-label="Sidebar"
+        >
             <div class="h-full flex flex-col">
                 <!-- Logo -->
                 <div class="h-16 flex items-center px-6 border-b border-white/5">
@@ -41,7 +48,7 @@
                 </div>
 
                 <!-- Nav -->
-                <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto" @click="if (window.innerWidth < 768) sidebarOpen = false">
                     <p class="px-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Content</p>
                     
                     <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('dashboard') ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 shadow-lg shadow-indigo-500/10' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
@@ -138,7 +145,7 @@
             <!-- Topbar -->
             <header class="h-16 flex items-center justify-between px-6 bg-slate-900/50 backdrop-blur-sm border-b border-white/5 sticky top-0 z-40">
                 <div class="flex items-center">
-                    <button class="md:hidden text-slate-400 hover:text-white mr-4">
+                    <button class="md:hidden text-slate-400 hover:text-white mr-4 rounded-lg p-2 hover:bg-white/5 transition-colors" @click="sidebarOpen = true" :aria-expanded="sidebarOpen.toString()" aria-controls="sidebar">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
@@ -148,19 +155,19 @@
                     </h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors">
+                    <a href="{{ route('dashboard.profile.edit') }}" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors" title="Profile">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </header>
 
             <!-- Page Content -->
             <main class="flex-1 overflow-y-auto bg-slate-950 p-6 relative">
                  <!-- Background Elements -->
-                 <div class="absolute top-0 left-0 w-full h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2"></div>
-                 <div class="absolute bottom-0 right-0 w-full h-96 bg-purple-500/5 rounded-full blur-3xl pointer-events-none translate-y-1/2"></div>
+                 <div class="absolute -top-24 -left-24 w-[36rem] h-[36rem] bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                 <div class="absolute -bottom-24 -right-24 w-[36rem] h-[36rem] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
                  <div class="relative z-10">
                      @yield('content')
