@@ -44,11 +44,10 @@ class ProjectSeeder extends Seeder
                 'title' => $project['title'] ?? '',
                 'slug' => $project['slug'],
                 'description' => $project['description'] ?? '',
-                'content' => $project['content'] ?? '',
                 'thumbnail' => $project['thumbnail'] ?? null,
                 'tech_stack' => is_array($project['tech_stack']) ? $project['tech_stack'] : [],
                 'github_url' => $project['github_url'] ?? null,
-                'live_url' => $project['live_url'] ?? null,
+                'demo_url' => $project['live_url'] ?? null,
                 'published_at' => $project['published_at'] ?? now(),
             ];
 
