@@ -4,46 +4,71 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Project;
+use Illuminate\Support\Facades\File;
 
 class ProjectSeeder extends Seeder
 {
     public function run(): void
     {
-        $projects = [
-            [
-                'title' => 'E-Commerce Platform',
-                'slug' => 'e-commerce-platform',
-                'description' => 'A fully featured e-commerce platform built with Laravel and React. Features include stripe payment integration, real-time inventory management, and a custom admin dashboard.',
-                'thumbnail' => null,
-                'tech_stack' => ['Laravel', 'React', 'MySQL', 'Stripe', 'Redis'],
-                'demo_url' => 'https://demo.ecommerce.com',
-                'github_url' => 'https://github.com/portfolio-owner/ecommerce',
-                'published_at' => now()->subMonths(2),
-            ],
-            [
-                'title' => 'Task Management SaaS',
-                'slug' => 'task-management-saas',
-                'description' => 'A productivity tool for teams to manage tasks and projects. Includes real-time collaboration with WebSockets, drag-and-drop kanban boards, and team analytics.',
-                'thumbnail' => null,
-                'tech_stack' => ['Vue.js', 'Firebase', 'Tailwind CSS', 'Node.js'],
-                'demo_url' => 'https://tasks.app',
-                'github_url' => 'https://github.com/portfolio-owner/tasks',
-                'published_at' => now()->subMonths(5),
-            ],
-            [
-                'title' => 'AI Image Generator',
-                'slug' => 'ai-image-generator',
-                'description' => 'An application that interfaces with OpenAI DALL-E 3 API to generate images from text prompts. Features a community gallery and prompt engineering tools.',
-                'thumbnail' => null,
-                'tech_stack' => ['Next.js', 'OpenAI API', 'PostgreSQL', 'Prisma'],
-                'demo_url' => 'https://ai-gen.art',
-                'github_url' => 'https://github.com/portfolio-owner/ai-gen',
-                'published_at' => now()->subMonth(),
-            ],
-        ];
+        // Path ke file JSON
+        $jsonPath = database_path('seeders/data/projects.json');
+
+        // Cek apakah file JSON ada
+        if (!File::exists($jsonPath)) {
+            $this->command->warn("File projects.json tidak ditemukan di {$jsonPath}");
+            return;
+        }
+
+        // Baca file JSON
+        $jsonContent = File::get($jsonPath);
+        $projects = json_decode($jsonContent, true);
+
+        // Validasi JSON
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->command->error('Error parsing projects.json: ' . json_last_error_msg());
+            return;
+        }
+
+        // Loop dan insert/update data
+        $createdCount = 0;
+        $updatedCount = 0;
 
         foreach ($projects as $project) {
-            Project::updateOrCreate(['slug' => $project['slug']], $project);
+            // Skip jika tidak ada slug
+            if (empty($project['slug'])) {
+                continue;
+            }
+
+            // Format data untuk database
+            $data = [
+                'title' => $project['title'] ?? '',
+                'slug' => $project['slug'],
+                'description' => $project['description'] ?? '',
+                'content' => $project['content'] ?? '',
+                'thumbnail' => $project['thumbnail'] ?? null,
+                'tech_stack' => is_array($project['tech_stack']) ? $project['tech_stack'] : [],
+                'github_url' => $project['github_url'] ?? null,
+                'live_url' => $project['live_url'] ?? null,
+                'published_at' => $project['published_at'] ?? now(),
+            ];
+
+            // Update atau create
+            $result = Project::updateOrCreate(
+                ['slug' => $project['slug']],
+                $data
+            );
+
+            // Track updates
+            if ($result->wasRecentlyCreated) {
+                $createdCount++;
+            } else {
+                $updatedCount++;
+            }
         }
+
+        // Output summary
+        $this->command->info("✓ Projects seeded successfully!");
+        $this->command->info("  Created: {$createdCount}");
+        $this->command->info("  Updated: {$updatedCount}");
     }
 }
