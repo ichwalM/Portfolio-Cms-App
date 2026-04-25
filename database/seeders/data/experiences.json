@@ -1,0 +1,37 @@
+[
+  {
+    "company": "Universitas Muslim Indonesia",
+    "role": "Laboratory Assistant, Faculty of Computer Science",
+    "start_date": "2025-12-30",
+    "end_date": null,
+    "description": "Be responsible for the network and servers in the Faculty of Computer Science."
+  },
+  {
+    "company": "Universitas Muslim Indonesia",
+    "role": "Informatics Engineering Student",
+    "start_date": "2023-01-08",
+    "end_date": null,
+    "description": "Focused on web development and computer networking. Active in programming communities and various group projects.\n- IPK 3.89\n- GDSC Member 2023 - 2024\n- DSC Member 2024 - 2025\n- Core Team Technical WEB, Cloud & Network"
+  },
+  {
+    "company": "PT Telkom Prima Cipta Certifia",
+    "role": "Junior Network Administrator",
+    "start_date": "2022-12-01",
+    "end_date": "2023-01-02",
+    "description": "Internship as IT Support, Developing and designing networks.\n- Merancang Pengalamatan Jaringan\n- Memasang Jaringan Nirkabel\n- Mengkonfigurasi Switch Pada Jaringan\n- Mengkonfigurasi Routing Pada Perangkat Jaringan dalam Satu Autonomous System\n- Mengkonfigurasi Routing Pada Perangkat Jaringan Antar Autonomous"
+  },
+  {
+    "company": "PT TKJ Club Makassar",
+    "role": "Network Administrator",
+    "start_date": "2022-06-01",
+    "end_date": "2022-11-10",
+    "description": "Internship as IT Support, helping troubleshoot hardware and software issues, and building Debian Linux-based servers.\n- Merancang Topologi Jaringan\n- Implementasi Router Server\n- Implementasi DNS Server\n- Implementasi Web Server Apache\n- Implementasi Mail Server\n- Implementasi Proxy Server\n- Implementasi File/Samba Server\n- Implementasi SNMP Munin Monitoring\n- Implementasi DHCP Server\n- Implementasi Router Mikrotik"
+  },
+  {
+    "company": "SMK Telekomunikasi Indonesia Makassar",
+    "role": "Student",
+    "start_date": "2020-07-01",
+    "end_date": "2023-03-31",
+    "description": "Major in Computer and Network Engineering (TKJ). Focused on hardware, network configuration, and technical support skills."
+  }
+]
