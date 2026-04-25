@@ -1,0 +1,36 @@
+{
+  "Backend": [
+    { "name": "Laravel", "proficiency": 90 },
+    { "name": "PHP", "proficiency": 55 },
+    { "name": "Node.js", "proficiency": 75 },
+    { "name": "MySQL", "proficiency": 90 },
+    { "name": "TypeScript", "proficiency": 45 },
+    { "name": "Next Js", "proficiency": 50 },
+    { "name": "Docker", "proficiency": 50 }
+  ],
+  "Frontend": [
+    { "name": "React", "proficiency": 85 },
+    { "name": "Tailwind CSS", "proficiency": 90 }
+  ],
+  "DevOps & Server": [
+    { "name": "Git", "proficiency": 80 },
+    { "name": "Proxmox", "proficiency": 90 },
+    { "name": "Ubuntu", "proficiency": 90 },
+    { "name": "Nginx", "proficiency": 85 },
+    { "name": "Debian", "proficiency": 75 },
+    { "name": "GitHub", "proficiency": 50 },
+    { "name": "Mikrotik-Winbox", "proficiency": 80 },
+    { "name": "Cloudflare", "proficiency": 77 },
+    { "name": "Virtualbox", "proficiency": 50 },
+    { "name": "Kali Linux", "proficiency": 65 }
+  ],
+  "Tools & IDE": [
+    { "name": "Visual Studio Code", "proficiency": 95 },
+    { "name": "Google Antigravity", "proficiency": 90 },
+    { "name": "CodeX - OpenAI", "proficiency": 90 },
+    { "name": "Cursor", "proficiency": 90 },
+    { "name": "Cisco Packet", "proficiency": 77 },
+    { "name": "Postman", "proficiency": 84 },
+    { "name": "TRAE AI", "proficiency": 78 }
+  ]
+}
