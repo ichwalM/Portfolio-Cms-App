@@ -27,6 +27,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('experiences', App\Http\Controllers\Dashboard\ExperienceController::class);
         Route::resource('blogs', App\Http\Controllers\Dashboard\BlogController::class);
         Route::resource('certificates', App\Http\Controllers\Dashboard\CertificateController::class);
+        Route::resource('wall-apps', App\Http\Controllers\Dashboard\WallAppController::class);
         Route::resource('contacts', App\Http\Controllers\Dashboard\ContactMessageController::class)->only(['index', 'destroy']);
         Route::delete('/blogs/{blog}/photo/{index}', [App\Http\Controllers\Dashboard\BlogController::class, 'deletePhoto'])->name('blogs.photo.delete');
     });

@@ -8,6 +8,7 @@ Dokumentasi lengkap untuk semua endpoint API di Ichwal CMS Portfolio.
 - **[Portfolio API](./02-PORTFOLIO-API.md)** - Endpoint untuk mengambil data portfolio
 - **[Contact API](./03-CONTACT-API.md)** - Endpoint untuk form kontak
 - **[Visit API](./04-VISIT-API.md)** - Endpoint untuk tracking kunjungan
+- **[Wall App API](./05-WALL-APP-API.md)** - Endpoint untuk data aplikasi wall app
 
 ## 🚀 Quick Start
 
@@ -39,6 +40,7 @@ X-API-Key: YOUR_API_KEY
 | **GET** | `/posts/{slug}` | Get single post | API Key |
 | **GET** | `/about` | Get about info | API Key |
 | **GET** | `/certificates` | Get certificates | API Key |
+| **GET** | `/wall-apps` | Get wall apps info | API Key |
 | **POST** | `/contact` | Submit contact form | API Key |
 | **POST** | `/visits` | Record visit | API Key |
 
